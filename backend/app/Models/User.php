@@ -19,6 +19,9 @@ class User extends Authenticatable implements JWTSubject
         'name',
         'email',
         'password',
+        'phone',
+        'age',
+        'owner'
     ];
 
     /**
@@ -59,5 +62,18 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+    public function restaurants()
+    {
+        return $this->hasOne(Restaurant::class);
+    }
 
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 }
